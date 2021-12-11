@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>125234724053-11shtifah6f7nbib9qikf3cne8js6oeq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.125234724053-11shtifah6f7nbib9qikf3cne8js6oeq</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>125234724053-gv5278l8g5m3ccvcva7h2dl1n6hv946p.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAaansRhmLjoKQkYBL6iK3YopwpnKsgbVk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>125234724053</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.Evac</string>
+	<key>PROJECT_ID</key>
+	<string>evac-5c939</string>
+	<key>STORAGE_BUCKET</key>
+	<string>evac-5c939.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:125234724053:ios:764dee0bf979cffbcab65c</string>
+	<key>DATABASE_URL</key>
+	<string>https://evac-5c939.firebaseio.com</string>
+</dict>
+</plist>

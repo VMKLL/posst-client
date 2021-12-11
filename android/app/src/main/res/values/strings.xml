@@ -1,0 +1,8 @@
+<resources>
+	<string name="app_name">
+		Evac
+	</string>
+	<string name="google_maps_key">
+		AIzaSyApMjLVlrmE2H46gML_lxl-Czxv0VpHjFY
+	</string>
+</resources>

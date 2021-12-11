@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "125234724053",
+    "firebase_url": "https://evac-5c939.firebaseio.com",
+    "project_id": "evac-5c939",
+    "storage_bucket": "evac-5c939.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125234724053:android:6746d6383057f51bcab65c",
+        "android_client_info": {
+          "package_name": "com.evac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125234724053-gv5278l8g5m3ccvcva7h2dl1n6hv946p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.evac",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "125234724053-tpcbd1eeql5bu5u0f2q0qrvp8aam2eps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD51QLK9xaYztal8UXIMmeQgredOTfCR_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125234724053-tpcbd1eeql5bu5u0f2q0qrvp8aam2eps.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "125234724053-11shtifah6f7nbib9qikf3cne8js6oeq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.Evac"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

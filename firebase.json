@@ -1,0 +1,6 @@
+{
+  "react-native": {
+    "messaging_android_notification_channel_id": "EVAC-Channel",
+    "ml_vision_ocr_model": true
+  }
+}
