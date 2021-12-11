@@ -1,21 +1,20 @@
 {
   "project_info": {
-    "project_number": "125234724053",
-    "firebase_url": "https://evac-5c939.firebaseio.com",
-    "project_id": "evac-5c939",
-    "storage_bucket": "evac-5c939.appspot.com"
+    "project_number": "247198192999",
+    "project_id": "posst-service",
+    "storage_bucket": "posst-service.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:125234724053:android:6746d6383057f51bcab65c",
+        "mobilesdk_app_id": "1:247198192999:android:b1c1927a30340da9f2cbc2",
         "android_client_info": {
           "package_name": "com.evac"
         }
       },
       "oauth_client": [
         {
-          "client_id": "125234724053-gv5278l8g5m3ccvcva7h2dl1n6hv946p.apps.googleusercontent.com",
+          "client_id": "247198192999-codbq0l7t2eidpoc44h0fsvore4hodv9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.evac",
@@ -23,27 +22,27 @@
           }
         },
         {
-          "client_id": "125234724053-tpcbd1eeql5bu5u0f2q0qrvp8aam2eps.apps.googleusercontent.com",
+          "client_id": "247198192999-uuknbj24h7btvu7noh5r30fdbl1bilc4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD51QLK9xaYztal8UXIMmeQgredOTfCR_U"
+          "current_key": "AIzaSyCIxrRpnnGBACeyrX3_wFV3OJUvVUQJKes"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "125234724053-tpcbd1eeql5bu5u0f2q0qrvp8aam2eps.apps.googleusercontent.com",
+              "client_id": "247198192999-uuknbj24h7btvu7noh5r30fdbl1bilc4.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "125234724053-11shtifah6f7nbib9qikf3cne8js6oeq.apps.googleusercontent.com",
+              "client_id": "247198192999-8gvu2dbtbmgeqkavgts8c1vqjnf99f44.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "org.reactjs.native.example.Evac"
+                "bundle_id": "com.evac"
               }
             }
           ]

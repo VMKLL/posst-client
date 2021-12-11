@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>125234724053-11shtifah6f7nbib9qikf3cne8js6oeq.apps.googleusercontent.com</string>
+	<string>247198192999-8gvu2dbtbmgeqkavgts8c1vqjnf99f44.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.125234724053-11shtifah6f7nbib9qikf3cne8js6oeq</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>125234724053-gv5278l8g5m3ccvcva7h2dl1n6hv946p.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.247198192999-8gvu2dbtbmgeqkavgts8c1vqjnf99f44</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAaansRhmLjoKQkYBL6iK3YopwpnKsgbVk</string>
+	<string>AIzaSyDAkP8ElaqV7HQf8py_qRfYVC4sq_7NiIg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>125234724053</string>
+	<string>247198192999</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.reactjs.native.example.Evac</string>
+	<string>com.evac</string>
 	<key>PROJECT_ID</key>
-	<string>evac-5c939</string>
+	<string>posst-service</string>
 	<key>STORAGE_BUCKET</key>
-	<string>evac-5c939.appspot.com</string>
+	<string>posst-service.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:125234724053:ios:764dee0bf979cffbcab65c</string>
-	<key>DATABASE_URL</key>
-	<string>https://evac-5c939.firebaseio.com</string>
+	<string>1:247198192999:ios:a428e717870bbae8f2cbc2</string>
 </dict>
 </plist>
