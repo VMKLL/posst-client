@@ -1,6 +1,6 @@
 {
   "react-native": {
-    "messaging_android_notification_channel_id": "EVAC-Channel",
+    "messaging_android_notification_channel_id": "Posst",
     "ml_vision_ocr_model": true
   }
 }
