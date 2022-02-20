@@ -6,8 +6,6 @@ import { Header2 } from '../../../components/Header';
 import { Input } from '../../../components/Input';
 
 export const DeleteUser = ({
-    password,
-    setPassword,
     onPressDeleteAndSignOut,
     switchButton,
 }) => {
@@ -15,15 +13,6 @@ export const DeleteUser = ({
         <>
             <View style={[styles.marginBottom, styles.marginTop]}>
                 <Header2 label="Подтвердите удаление" />
-            </View>
-            <View style={styles.marginBottom}>
-                <Input
-                    label="Пароль"
-                    value={password}
-                    onChange={setPassword}
-                    capitalize="none"
-                    secure={true}
-                />
             </View>
             <View style={styles.marginBottom}>
                 {!switchButton ? (

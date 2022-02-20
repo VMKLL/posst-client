@@ -8,12 +8,14 @@ export async function signIn() {
     try {
         let result = null;
         const currentUser = auth().currentUser;
+        console.log(currentUser);
         if (currentUser) {
-            const isAnonymous = auth().currentUser.isAnonymous;
-            if (isAnonymous) {
+            console.log('auth().currentUser.displayName: ', auth().currentUser.displayName);
+            const displayName = auth().currentUser.displayName;
+            if (displayName === null) {
                 result = anonymousSignIn();
             } else {
-                result = emailSignIn();
+                result = anonymousSignInWithName();
             }
         } else {
             result = anonymousSignUp();
@@ -71,7 +73,7 @@ async function anonymousSignIn() {
     }
 }
 
-async function emailSignIn() {
+async function anonymousSignInWithName() {
     try {
         const token = await auth().currentUser.getIdToken(true);
         const deviceUid = DeviceInfo.getUniqueId();

@@ -7,6 +7,7 @@ import {
     ScrollView,
     Platform,
     TouchableOpacity,
+    Button,
 } from 'react-native';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import auth from '@react-native-firebase/auth';
@@ -263,7 +264,7 @@ export const SettingsScrn = ({ navigation }) => {
     }
     async function onPressDeleteAndSignOut() {
         setSwitchButton(true);
-        const isResult = await deleteAndSignOut(password);
+        const isResult = await deleteAndSignOut();
         if (isResult) {
             await auth().currentUser.delete();
             store.dispatch(SIGN_OUT);
@@ -285,6 +286,9 @@ export const SettingsScrn = ({ navigation }) => {
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.settingsContainer}>
+                    <Button title='PUSH ME' onPress={() => {
+                        console.log('currentUser:', auth().currentUser);
+                    }} />
                     <Settings
                         {...{
                             userCarNumber,
@@ -306,8 +310,6 @@ export const SettingsScrn = ({ navigation }) => {
                     {...{ errorMessage, containerHeight, onPopupClose }}>
                     <DeleteUser
                         {...{
-                            password,
-                            setPassword,
                             onPressDeleteAndSignOut,
                             switchButton,
                         }}

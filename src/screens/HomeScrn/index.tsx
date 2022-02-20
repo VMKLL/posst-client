@@ -8,6 +8,7 @@ import {
     Platform,
 } from 'react-native';
 import { RootStateOrAny, useSelector } from 'react-redux';
+import auth from '@react-native-firebase/auth';
 import { useKeyboardHeight } from '../../hooks/useKeyboardHeight';
 import { useRequestNotification } from './hooks/useRequestNotification';
 import { getDimensions } from '../../functions/getDimensions';
@@ -28,8 +29,7 @@ import { animateToRegion } from './../HomeScrn/ui/Map/functions/animateToRegion'
 import { searchRegion } from '../../functions/searchRegion';
 import { submitReport } from './functions/submitReport';
 import { clearError } from '../../functions/auth/clearError';
-import { emailSignIn } from '../../functions/auth/emailSignIn';
-import { emailSignUp } from '../../functions/auth/emailSignUp';
+import { anonymousSignUp } from '../../functions/auth/anonymousSignUp';
 import { Map } from './../HomeScrn/ui/Map';
 import { AccountButton, CloseCameraButton } from '../../components/IconButton';
 import { SettingsButton } from '../../components/IconButton';
@@ -40,7 +40,7 @@ import { SimpleButton } from '../../components/Button';
 import { DisabledButton } from '../../components/DisabledButton';
 import { Popup } from '../../components/Popup';
 import { AuthContainer } from '../../components/AuthContainer';
-import { Authentication } from './../HomeScrn/ui/Authentication';
+import { AuthAnonymous } from './../HomeScrn/ui/AuthAnonymous';
 //import { ReportType } from './../HomeScrn/ui/ReportType';
 import { Header2, Header3 } from '../../components/Header';
 
@@ -74,9 +74,6 @@ export const HomeScrn = ({ route, navigation }) => {
     const [switchButton, setSwitchButton] = useState(false);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [isPosstPressed, setIsPosstPressed] = useState(false);
 
     const keyboardHeight = useKeyboardHeight();
@@ -138,12 +135,6 @@ export const HomeScrn = ({ route, navigation }) => {
         });
         return unsubscribeOnBlur;
     }, [navigation]);
-
-    useEffect(() => {
-        if (password.length === 0) {
-            setConfirmPassword('');
-        }
-    }, [password.length]);
 
     function resetCarNavigationRouteParams() {
         navigation.setParams({
@@ -219,42 +210,6 @@ export const HomeScrn = ({ route, navigation }) => {
             setSwitchButton(false);
         }, 2500);
     }
-    async function onPressSignIn() {
-        setSwitchButton(true);
-        let notificationStatus: boolean;
-        if (Platform.OS === 'android') {
-            if (notification.status === 'denied') {
-                notificationStatus = false;
-            } else if (notification.status === 'granted') {
-                notificationStatus = true;
-            } else if (notification.status === 'blocked') {
-                notificationStatus = false;
-            }
-        } else if (Platform.OS === 'ios') {
-            if (
-                notification.isProvisional === true &&
-                notification.status === 'granted'
-            ) {
-                notificationStatus = false;
-            } else if (
-                notification.isProvisional === false &&
-                notification.status === 'granted'
-            ) {
-                notificationStatus = true;
-            } else if (
-                notification.isProvisional === false &&
-                notification.status === 'blocked'
-            ) {
-                notificationStatus = false;
-            }
-        }
-        const isResult = await emailSignIn(email, password, notificationStatus);
-        if (isResult) {
-            setIsPopupVisible(false);
-            navigateToSettings();
-        }
-        setSwitchButton(false);
-    }
     async function onPressSignUp() {
         setSwitchButton(true);
         let notificationStatus: boolean;
@@ -284,36 +239,23 @@ export const HomeScrn = ({ route, navigation }) => {
                 notificationStatus = false;
             }
         }
-        const isResult = await emailSignUp(
+        const isResult = await anonymousSignUp(
             carNumber,
             carRegion,
-            email,
-            password,
-            confirmPassword,
             notificationStatus,
         );
         if (isResult) {
             setIsPopupVisible(false);
             navigateToSettings();
+            await auth().currentUser.reload();
         }
         setSwitchButton(false);
-    }
-    function onPressRegister() {
-        clearError();
-        setIsRegistered(false);
-    }
-    function onPressAlreadyRegistered() {
-        clearError();
-        setIsRegistered(true);
     }
     function onPopupClose() {
         if (!switchButton) {
             clearError();
             setCarNumber('');
             setCarRegion('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
             setIsRegistered(false);
             setIsPopupVisible(false);
         } else {
@@ -339,7 +281,7 @@ export const HomeScrn = ({ route, navigation }) => {
                     <View style={[styles.submitReportView, withShadow]}>
                         <View style={styles.reportElementView}>
                             {reportType === 'DEER' ? (
-                                <Header2 label={'Хам'} />
+                                <Header2 label={'Автохам'} />
                             ) : null}
                             {reportType === 'EVAC' ? (
                                 <Header2 label={'Эвакуация'} />
@@ -364,8 +306,8 @@ export const HomeScrn = ({ route, navigation }) => {
                         </View>
                         <View style={[styles.reportElementView]}>
                             {!switchButton &&
-                            carNumber.length === 6 &&
-                            carRegion.length > 1 ? (
+                                carNumber.length === 6 &&
+                                carRegion.length > 1 ? (
                                 <SimpleButton
                                     label="Отправить"
                                     onPress={() => onPressSubmitReport()}
@@ -379,20 +321,12 @@ export const HomeScrn = ({ route, navigation }) => {
                                 styles.reportElementView,
                                 styles.reportTypeDescription,
                             ]}>
-                            {reportType === 'DEER' ? (
-                                <Header3
-                                    label={
-                                        'Пользователи, подписанные на этот номер, получат оповещения.'
-                                    }
-                                />
-                            ) : null}
-                            {reportType === 'EVAC' ? (
-                                <Header3
-                                    label={
-                                        'Пользователи, подписанные на этот номер, получат оповещения об эвакуации.'
-                                    }
-                                />
-                            ) : null}
+                            {reportType === 'DEER' ?
+                                <Text style={styles.descriptionText}>Пользователи, подписанные на этот номер, получат оповещения</Text>
+                                : null}
+                            {reportType === 'EVAC' ?
+                                <Text style={styles.descriptionText}>Пользователи, подписанные на этот номер, получат оповещения об эвакуации</Text>
+                                : null}
                         </View>
                     </View>
                 </>
@@ -503,7 +437,7 @@ export const HomeScrn = ({ route, navigation }) => {
                                                 styles.text,
                                                 { color: black },
                                             ]}>
-                                            Хам
+                                            Автохам
                                         </Text>
                                     </View>
                                 </View>
@@ -515,24 +449,14 @@ export const HomeScrn = ({ route, navigation }) => {
                 <Popup {...{ isPopupVisible, onPopupClose }}>
                     <AuthContainer
                         {...{ errorMessage, containerHeight, onPopupClose }}>
-                        <Authentication
+                        <AuthAnonymous
                             {...{
-                                isRegistered,
                                 switchButton,
                                 carNumber,
                                 setCarNumber,
                                 carRegion,
                                 setCarRegion,
-                                email,
-                                setEmail,
-                                password,
-                                setPassword,
-                                confirmPassword,
-                                setConfirmPassword,
-                                onPressAlreadyRegistered,
-                                onPressSignIn,
                                 onPressSignUp,
-                                onPressRegister,
                             }}
                         />
                     </AuthContainer>
@@ -635,7 +559,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     reportTypeDescription: {
-        width: 244,
+        width: '90%',
         paddingBottom: 5,
     },
     transparentContainer: {
@@ -656,5 +580,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
+    },
+    descriptionText: {
+        color: 'rgb(69, 69, 69)',
+        fontSize: 17,
+        fontWeight: '300',
     },
 });

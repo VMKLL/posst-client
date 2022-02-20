@@ -37,7 +37,7 @@ export const Settings = ({
             </View>
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>
-                    Ваш адрес электронной почты.
+                    Ваш публичный ник.
                 </Text>
             </View>
             <View style={styles.notificationContainer}>
