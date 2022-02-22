@@ -29,10 +29,12 @@ export async function emailSignUp(
             } else if (email && password) {
                 if (password === confirmPassword) {
                     const anonymousUid = auth().currentUser.uid;
-                    await auth().createUserWithEmailAndPassword(
+                    /* await auth().createUserWithEmailAndPassword(
                         email,
                         password,
-                    );
+                    ); */
+                    await auth().currentUser.updateProfile({ displayName: email });
+                    console.log('USER: ', auth().currentUser);
                     const token = await auth().currentUser.getIdToken(true);
                     const deviceUid = DeviceInfo.getUniqueId();
                     const deviceToken = await messaging().getToken();
@@ -40,6 +42,7 @@ export async function emailSignUp(
                         '/user/signup',
                         {
                             anonymousUid,
+                            email,
                             carNumber,
                             carRegion,
                             deviceUid,
@@ -52,7 +55,7 @@ export async function emailSignUp(
                             },
                         },
                     );
-                    const isResult = response.data.result;
+                    const isResult = true;
                     if (isResult) {
                         store.dispatch({
                             type: 'SIGN_UP',
