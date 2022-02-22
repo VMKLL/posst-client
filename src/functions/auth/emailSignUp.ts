@@ -43,6 +43,7 @@ export async function emailSignUp(
                         {
                             anonymousUid,
                             email,
+                            password,
                             carNumber,
                             carRegion,
                             deviceUid,
