@@ -9,8 +9,8 @@ export async function signIn() {
         let result = null;
         const currentUser = auth().currentUser;
         if (currentUser) {
-            const isAnonymous = auth().currentUser.isAnonymous;
-            if (isAnonymous) {
+            const isRegistered = auth().currentUser.displayName;
+            if (!isRegistered) {
                 result = anonymousSignIn();
             } else {
                 result = emailSignIn();

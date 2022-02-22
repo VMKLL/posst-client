@@ -29,10 +29,6 @@ export async function emailSignUp(
             } else if (email && password) {
                 if (password === confirmPassword) {
                     const anonymousUid = auth().currentUser.uid;
-                    /* await auth().createUserWithEmailAndPassword(
-                        email,
-                        password,
-                    ); */
                     await auth().currentUser.updateProfile({ displayName: email });
                     console.log('USER: ', auth().currentUser);
                     const token = await auth().currentUser.getIdToken(true);
@@ -56,7 +52,7 @@ export async function emailSignUp(
                             },
                         },
                     );
-                    const isResult = true;
+                    const isResult = response.data.result;
                     if (isResult) {
                         store.dispatch({
                             type: 'SIGN_UP',
